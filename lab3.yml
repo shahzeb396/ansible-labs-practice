@@ -1,0 +1,14 @@
+---
+- hosts: local
+  become: yes
+  tasks:
+   - name: Install Apache
+     apt:
+      name: apache2
+      state: present
+     tags: Install
+   - name: Start Apache
+     service:
+      name: apache2
+      state: Started
+     tags: Start

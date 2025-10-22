@@ -1,0 +1,14 @@
+---
+- hosts: local
+  become: yes
+  tasks:
+   - name: Update nginx
+     copy:
+      dest: /var/www/html/index.html
+      content: "My Name is Shahzeb and I Am Devops Engineer"
+     notify: restart nginx
+  handlers:
+   - name: restart nginx
+     service: 
+      name: nginx
+      state: restarted
